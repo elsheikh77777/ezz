@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الخدمات - مركز خالد عز الرجال</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* إضافات خاصة بصفحة الخدمات */
+        .services-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path fill="%23ffffff" fill-opacity="0.1" d="M0,100 C300,20 700,20 1000,100 L1000,0 L0,0 Z"></path></svg>');
+            background-size: cover;
+        }
+
+        .services-hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .services-hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .services-hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* قسم الخدمات الرئيسية */
+        .main-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(25, 118, 210, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--secondary-color);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+            color: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        /* قسم وحدة علاج الجفاف */
+        .dry-eye-section {
+            padding: 80px 0;
+            background: var(--light-gray);
+        }
+
+        .dry-eye-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 600px;
+        }
+
+        .dry-eye-image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .dry-eye-image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .dry-eye-text-overlay {
+            position: absolute;
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%);
+            width: 450px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 18px;
+            box-shadow: var(--shadow-hover);
+            text-align: right;
+            direction: rtl;
+            backdrop-filter: blur(8px);
+        }
+
+        .dry-eye-text-overlay h2 {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            line-height: 1.4;
+            text-align: right;
+        }
+
+.dry-eye-text-overlay .dry-eye-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+    direction: rtl; /* مهم جداً لجعل النص من اليمين */
+}
+
+.dry-eye-text-overlay .dry-eye-list li {
+    display: flex;
+    flex-direction: row; /* رجّع الاتجاه الطبيعي */
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: var(--dark-gray);
+    line-height: 1.6;
+    text-align: right;
+}
+
+.dry-eye-text-overlay .dry-eye-list li .icon {
+    order: -1; /* يحرك الأيقونة لليمين */
+    margin-left: 10px; /* مسافة بين الأيقونة والنص */
+    margin-right: 0;
+    color: var(--primary-color);
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+
+        .dry-eye-text-overlay .btn-primary {
+            margin-top: 20px;
+            display: inline-block;
+            font-size: 16px;
+            padding: 12px 25px;
+            width: auto;
+        }
+
+        /* قسم الاستشارة السريعة */
+        .quick-consultation-section {
+            padding: 80px 0;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .consultation-form {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px;
+            background: var(--light-gray);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .consultation-form textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            resize: vertical;
+            font-family: 'Segoe UI', 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .consultation-form textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.3);
+        }
+
+        .consultation-result {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--light-blue);
+            border-radius: 15px;
+            border: 1px solid var(--accent-color);
+            text-align: right;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--dark-blue);
+            font-weight: 500;
+            line-height: 1.7;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--primary-color);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+            display: none; /* مخفي افتراضياً */
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* التصميم المتجاوب */
+        @media (max-width: 1024px) {
+            .dry-eye-text-overlay {
+                width: 380px;
+                right: 25px;
+            }
+            
+            .dry-eye-text-overlay h2 {
+                font-size: 24px;
+            }
+
+            .dry-eye-text-overlay .dry-eye-list li {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-hero h1 {
+                font-size: 36px;
+            }
+
+            .services-hero p {
+                font-size: 18px;
+            }
+
+            .main-services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dry-eye-content {
+                flex-direction: column;
+                padding: 0 20px;
+                min-height: auto;
+            }
+
+            .dry-eye-image-wrapper {
+                margin-bottom: 30px;
+            }
+
+            .dry-eye-image {
+                height: 400px;
+            }
+
+            .dry-eye-text-overlay {
+                position: static;
+                width: 100%;
+                transform: none;
+                padding: 20px;
+                background: var(--white);
+                box-shadow: var(--shadow);
+                margin-top: 0;
+            }
+
+            .dry-eye-text-overlay h2 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .dry-eye-text-overlay .dry-eye-list li {
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+
+            .dry-eye-text-overlay .btn-primary {
+                font-size: 16px;
+                padding: 12px 24px;
+            }
+
+            .consultation-form {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-hero {
+                padding: 80px 0 60px;
+            }
+
+            .services-hero h1 {
+                font-size: 28px;
+            }
+
+            .dry-eye-text-overlay {
+                padding: 15px;
+            }
+
+            .dry-eye-text-overlay h2 {
+                font-size: 20px;
+            }
+
+            .consultation-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/new logo.png" alt="مركز خالد عز الرجال">
+                </a>
+                <!-- تمت إضافة مسار الصورة الجديدة هنا -->
+                <img src="assets/images/54646465.png" alt="شعار 25 عام خبرة" class="additional-logo">
+                <button class="lang-toggle" onclick="toggleLanguage()" title="تغيير اللغة">
+                    <span class="lang-text">English</span>
+                    <span class="lang-icon">🌐</span>
+                </button>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="services.html" class="active">الخدمات</a></li>
+                    <li><a href="appointment.html">احجز موعد</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <div class="services-hero-content">
+                <h1>خدماتنا الشاملة والمتكاملة</h1>
+                <p>
+                    نقدم مجموعة واسعة من الخدمات الطبية المتخصصة في مجال طب وجراحة العيون،
+                    باستخدام أحدث التقنيات وأفضل الكفاءات لضمان أفضل النتائج لمرضانا.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات الرئيسية -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>تخصصاتنا الأساسية</h2>
+                <p>نحن هنا لتقديم الرعاية الصحية الشاملة لعينيك</p>
+            </div>
+            <div class="main-services-grid">
+                <div class="service-card">
+                    <div class="service-icon">👁️</div>
+                    <h3>تصحيح النظر</h3>
+                    <p>أحدث تقنيات الليزر لتصحيح عيوب الإبصار وتحقيق رؤية واضحة.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💧</div>
+                    <h3>الجفاف وأمراض سطح العين</h3>
+                    <p>تشخيص وعلاج شامل لمشاكل جفاف العين وأمراض السطح.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3>علاج الشبكية</h3>
+                    <p>علاج أمراض الشبكية المختلفة بأحدث الأساليب والتقنيات.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚪</div>
+                    <h3>جراحة الماء الأبيض (الكتاراكت)</h3>
+                    <p>إجراء جراحي آمن وفعال لإزالة الماء الأبيض واستعادة الرؤية.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👀</div>
+                    <h3>الحول للأطفال والكبار</h3>
+                    <p>تشخيص وعلاج حالات الحول المختلفة لجميع الفئات العمرية.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔵</div>
+                    <h3>جراحة الماء الأزرق (الجلوكوما)</h3>
+                    <p>علاج الجلوكوما للحفاظ على البصر ومنع المضاعفات.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم وحدة علاج الجفاف وأمراض سطح العين بالتفصيل -->
+    <section class="dry-eye-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>وحدة علاج الجفاف وأمراض سطح العين</h2>
+                <p>عيونك أمانة لدينا: أحدث التقنيات لتشخيص وعلاج شامل</p>
+            </div>
+            <div class="dry-eye-content">
+                <div class="dry-eye-image-wrapper">
+                    <img src="assets/images/4.jpg" alt="وحدة علاج الجفاف" class="dry-eye-image">
+                    <div class="dry-eye-text-overlay">
+                        <h2>أحدث جهاز تشخيصي للجفاف وأمراض سطح العين بالعالم</h2>
+                        <ul class="dry-eye-list">
+                            <li><span class="icon">✔️</span> علاج جفاف العين المزمن</li>
+                            <li><span class="icon">✔️</span> سدادات وحقن الفيلر بالقناة الدمعية</li>
+                            <li><span class="icon">✔️</span> علاج حساسية العيون الموسمية والمزمنة</li>
+                            <li><span class="icon">✔️</span> متابعة وعلاج قرحة القرنية المناعية والمعدية</li>
+                            <li><span class="icon">✔️</span> علاج عتامة القرنية بالعلاج الدوائي والليزر وزراعة القرنية</li>
+                            <li><span class="icon">✔️</span> زراعة الخلايا الجذعية لأمراض نقص الخلايا الجذعية بالقرنية</li>
+                        </ul>
+                        <a href="appointment.html" class="btn btn-primary" id="servicesCtaButton">
+                            📅 احجز موعدك الآن
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الاستشارة السريعة المدعوم بـ Gemini API -->
+    <section class="quick-consultation-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>احصل على استشارة سريعة ✨</h2>
+                <p>صف أعراضك أو استفسارك، وسنساعدك في تحديد الخدمة المناسبة.</p>
+            </div>
+            <div class="consultation-form">
+                <textarea id="consultationInput" placeholder="مثال: أعاني من جفاف شديد في العين مع حكة واحمرار..."></textarea>
+                <button id="getRecommendationBtn" class="btn btn-primary">
+                    ✨ احصل على توصية الخدمة
+                </button>
+                <div id="consultationResult" class="consultation-result" style="display: none;">
+                    <div class="loading-spinner" style="display: none;"></div>
+                    <p id="resultText"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 مركز خالد عز الرجال. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
