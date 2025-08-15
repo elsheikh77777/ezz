@@ -1,439 +1,193 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تواصل معنا - مركز خالد عز الرجال</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* إضافات خاصة بصفحة اتصل بنا */
-        .contact-hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: 100px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تواصل معنا - مركز خالد عز الرجال</title>
 
-        .contact-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path fill="%23ffffff" fill-opacity="0.1" d="M0,100 C300,20 700,20 1000,100 L1000,0 L0,0 Z"></path></svg>');
-            background-size: cover;
-        }
+  <!-- Favicon links بأحجام متعددة -->
+  <link rel="icon"  type="image/png" sizes="16x16"   href="assets/icons/favicon-16x16.png">
+  <link rel="icon"  type="image/png" sizes="32x32"   href="assets/icons/favicon-32x32.png">
+  <link rel="icon"  type="image/png" sizes="48x48"   href="assets/icons/favicon-48x48.png">
+  <link rel="icon"  type="image/png" sizes="96x96"   href="assets/icons/favicon-96x96.png">
+  <link rel="icon"  type="image/png" sizes="192x192" href="assets/icons/favicon-192x192.png">
+  <link rel="icon"  type="image/png" sizes="512x512" href="assets/icons/favicon-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180"        href="assets/icons/apple-touch-icon.png">
+  <link rel="shortcut icon"                           href="assets/icons/favicon.ico">
+  <link rel="manifest"                                href="assets/icons/site.webmanifest">
 
-        .contact-hero-content {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-hero h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .contact-hero p {
-            font-size: 20px;
-            opacity: 0.95;
-            line-height: 1.8;
-            margin-bottom: 40px;
-        }
-
-        /* قسم معلومات الاتصال */
-        .contact-info-section {
-            padding: 80px 0;
-            background: var(--light-gray);
-            text-align: center;
-        }
-
-        .clinics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .clinic-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(25, 118, 210, 0.1);
-            text-align: right;
-        }
-
-        .clinic-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--secondary-color);
-        }
-
-        .clinic-card h3 {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .clinic-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .clinic-card ul li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            font-size: 17px;
-            color: var(--dark-gray);
-            line-height: 1.6;
-        }
-
-        .clinic-card ul li .icon {
-            color: var(--primary-color);
-            font-size: 20px;
-            margin-left: 15px; /* مسافة بين الأيقونة والنص في RTL */
-            line-height: 1;
-            flex-shrink: 0; /* منع الأيقونة من الانكماش */
-        }
-
-        .clinic-card ul li a {
-            color: var(--medium-gray);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .clinic-card ul li a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
-        }
-
-        /* قسم معلومات الاتصال العامة (أرقام الهاتف) */
-        .general-contact-info {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(25, 118, 210, 0.1);
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .general-contact-info h3 {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .general-contact-info .phone-numbers a {
-            display: inline-block;
-            margin: 0 15px;
-            color: var(--dark-gray);
-            font-size: 20px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .general-contact-info .phone-numbers a:hover {
-            color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-
-        /* قسم نموذج الاتصال */
-        .contact-form-section {
-            padding: 80px 0;
-            background: var(--white);
-        }
-
-        .contact-form-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 50px;
-            background: var(--light-gray);
-            border-radius: 20px;
-            box-shadow: var(--shadow-hover);
-            text-align: right;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="tel"], /* تم التعديل هنا */
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 20px;
-            border: 2px solid var(--primary-color);
-            border-radius: 10px;
-            font-size: 17px;
-            color: var(--dark-gray);
-            background-color: var(--white);
-            transition: var(--transition);
-            box-sizing: border-box;
-            font-family: 'Segoe UI', 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
-            direction: rtl;
-            text-align: right;
-        }
-
-        .form-group input[type="text"]:focus,
-        .form-group input[type="tel"]:focus, /* تم التعديل هنا */
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.3);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .contact-submit-btn {
-            width: 100%;
-            padding: 18px 30px;
-            font-size: 20px;
-            font-weight: 700;
-            margin-top: 30px;
-        }
-
-        #contactFormMessage { /* تم إضافة ID جديد لرسالة النموذج */
-            margin-top: 25px;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 17px;
-            text-align: center;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        #contactFormMessage.success {
-            background-color: #E8F5E9; /* Light Green */
-            color: #2E7D32; /* Dark Green */
-            border: 1px solid #4CAF50;
-        }
-
-        #contactFormMessage.error {
-            background-color: #FFEBEE; /* Light Red */
-            color: #D32F2F; /* Dark Red */
-            border: 1px solid #F44336;
-        }
-
-        #contactFormSpinner { /* تم إضافة ID جديد لمؤشر التحميل */
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left-color: var(--primary-color);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto 0;
-            display: none; /* مخفي افتراضياً */
-        }
-
-        /* التصميم المتجاوب */
-        @media (max-width: 768px) {
-            .contact-hero h1 {
-                font-size: 36px;
-            }
-
-            .contact-hero p {
-                font-size: 18px;
-            }
-
-            .clinics-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-form-container {
-                padding: 30px;
-            }
-
-            .form-group label {
-                font-size: 16px;
-            }
-
-            .form-group input,
-            .form-group textarea {
-                font-size: 15px;
-                padding: 12px 15px;
-            }
-
-            .contact-submit-btn {
-                font-size: 18px;
-                padding: 16px 25px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .contact-hero {
-                padding: 80px 0 60px;
-            }
-
-            .contact-hero h1 {
-                font-size: 28px;
-            }
-
-            .contact-form-container {
-                padding: 20px;
-            }
-            .general-contact-info .phone-numbers a {
-                font-size: 18px;
-                margin: 0 10px;
-            }
-        }
-    </style>
+  <link rel="stylesheet" href="style.css" />
+  <!-- رابط Font Awesome الإصدار 6.5.1 -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo-section">
-                <a href="index.html" class="logo">
-                    <img src="assets/images/new logo.png" alt="مركز خالد عز الرجال">
-                </a>
-                <!-- تمت إضافة مسار الصورة الجديدة هنا -->
-                <img src="assets/images/54646465.png" alt="شعار 25 عام خبرة" class="additional-logo">
-                <button class="lang-toggle" onclick="toggleLanguage()" title="تغيير اللغة">
-                    <span class="lang-text">English</span>
-                    <span class="lang-icon">🌐</span>
-                </button>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="about.html">من نحن</a></li>
-                    <li><a href="services.html">الخدمات</a></li>
-                    <li><a href="appointment.html">احجز موعد</a></li>
-                    <li><a href="contact.html" class="active">تواصل معنا</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <header>
+    <div class="header-container">
+      <div class="logo-section">
+        <a href="index.html" class="logo">
+          <img src="assets/images/logo.png" alt="مركز خالد عز الرجال" />
+          <img src="assets/images/logo2.png" alt="الشعار الثانوي" class="additional-logo" />
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+          <li><a href="about.html"><i class="fas fa-info-circle"></i> من نحن</a></li>
+          <li><a href="services.html"><i class="fas fa-stethoscope"></i> الخدمات</a></li>
+          <li><a href="appointment.html"><i class="fas fa-calendar-check"></i> احجز موعد</a></li>
+          <li><a href="contact.html" class="active"><i class="fas fa-phone"></i> تواصل معنا</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-menu-toggle" aria-label="فتح القائمة">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="contact-hero">
-        <div class="container">
-            <div class="contact-hero-content">
-                <h1>تواصل معنا</h1>
+  <main>
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>تواصل معنا</h1>
+        <p>نسعد باستفساراتك وحجوزاتك على مدار الأسبوع</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-wrapper">
+          
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <h2><i class="fas fa-map-marker-alt"></i> بيانات التواصل</h2>
+            
+            <!-- Zagazig Clinic -->
+            <div class="contact-method">
+              <div class="contact-icon"><i class="fas fa-clinic-medical"></i></div>
+              <div>
+                <h3>عيادة الزقازيق</h3>
+                <p><strong>مواعيد العمل:</strong> السبت إلى الخميس ⏰ 9 ص - 9 م</p>
+                <p><strong>مواعيد د. خالد:</strong><br>السبت: 12ظ - 2ظ<br>الاثنين والأربعاء: 10ص - 7م</p>
+                <p>الزقازيق القومية شارع طلبة عويضة أمام ايس كريم توته</p>
                 <p>
-                    نحن هنا للإجابة على جميع استفساراتكم وتقديم المساعدة.
-                    لا تترددوا في الاتصال بنا أو ملء النموذج أدناه.
+                  <a href="https://maps.app.goo.gl/AAHNNJ6c3zvBJmQk9" target="_blank">
+                    <i class="fas fa-map-marker-alt"></i> مشاهدة على الخريطة
+                  </a>
                 </p>
+              </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Contact Info Section -->
-    <section class="contact-info-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>معلومات الاتصال</h2>
-                <p>يمكنكم التواصل معنا عبر العيادات التالية أو أرقام الهاتف العامة:</p>
+            <!-- Ibrahimiya Clinic -->
+            <div class="contact-method">
+              <div class="contact-icon"><i class="fas fa-clinic-medical"></i></div>
+              <div>
+                <h3>عيادة الإبراهيمية</h3>
+                <p><strong>أيام العمل:</strong> الأحد - الثلاثاء - الخميس</p>
+                <p>الإبراهيمية حي الصاغة</p>
+                <p>
+                  <a href="https://maps.app.goo.gl/ayEhNVi1kKBcXv1f7" target="_blank">
+                    <i class="fas fa-map-marker-alt"></i> مشاهدة على الخريطة
+                  </a>
+                </p>
+              </div>
             </div>
-            <div class="clinics-grid">
-                <!-- Zaqaziq Clinic Card -->
-                <div class="clinic-card" id="zaqaziqClinic">
-                    <h3>عيادة الزقازيق 🏥</h3>
-                    <ul>
-                        <li><span class="icon"><i class="fas fa-calendar-alt"></i></span> <strong class="card-label">أيام العمل:</strong> <span class="card-value">السبت، الاثنين، الأربعاء</span></li>
-                        <li><span class="icon"><i class="fas fa-clock"></i></span> <strong class="card-label">مواعيد العمل العامة:</strong> <span class="card-value">من 9 صباحاً حتى 9 مساءً</span></li>
-                        <li><span class="icon"><i class="fas fa-user-md"></i></span> <strong class="card-label">مواعيد د. خالد:</strong> <span class="card-value">السبت 12 ظهراً - 2 ظهراً، الاثنين والأربعاء 10 صباحاً - 7 مساءً</span></li>
-                        <li><span class="icon"><i class="fas fa-info-circle"></i></span> <strong class="card-label">مواعيد الاستشاريين:</strong> <span class="card-value">باقي الأيام (المياه الزرقاء، القُرح والجفاف، الأطفال والحول، عيادة الشبكية)</span></li>
-                        <li><span class="icon"><i class="fas fa-map-marker-alt"></i></span> <strong class="card-label">العنوان:</strong> <span class="card-value">الزقازيق القومية شارع طلبة عويضة امام ايس كريم توته</span></li>
-                        <li><span class="icon"><i class="fas fa-map"></i></span> <a href="https://maps.app.goo.gl/AAHNNJ6c3zvBJmQk9" target="_blank" class="card-link">عرض على الخريطة</a></li>
-                        <li><span class="icon"><i class="fab fa-whatsapp"></i></span> <a href="https://api.whatsapp.com/send?phone=%2B201005595000" target="_blank" class="card-link">واتساب العيادة</a></li>
-                        <li><span class="icon"><i class="fab fa-facebook-f"></i></span> <a href="https://www.facebook.com/share/16mmwBin46/" target="_blank" class="card-link">صفحة الفيسبوك</a></li>
-                    </ul>
+
+            <!-- Consultants -->
+            <div class="contact-method">
+              <div class="contact-icon"><i class="fas fa-user-md"></i></div>
+              <div>
+                <h3>استشاريون في باقي الأيام</h3>
+                <ul>
+                  <li>المياه الزرقاء</li>
+                  <li>القرح وجفاف العين</li>
+                  <li>الأطفال والحول</li>
+                  <li>أمراض الشبكية</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Reservation & Phones -->
+            <div class="contact-method">
+              <div class="contact-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <h3>للحجز والاستفسار</h3>
+                <div class="contact-links">
+                  <a href="tel:01005595000"><i class="fas fa-phone"></i> 01005595000</a>
+                  <a href="tel:01002405871"><i class="fas fa-phone"></i> 01002405871</a>
+          <div class="link-row">
+        <a href="https://api.whatsapp.com/send?phone=%2B201005595000" target="_blank">
+          <i class="fab fa-whatsapp"></i> واتساب
+        </a>
+        <a href="https://www.facebook.com/share/16mmwBin46/" target="_blank">
+          <i class="fab fa-facebook-square"></i> فيسبوك
+        </a>
+      </div>
                 </div>
+                <p><strong>ملاحظة:</strong> الحجز قبل الموعد بيوم واحد على الأقل</p>
+              </div>
+            </div>
+          </div>
 
-                <!-- Ibrahimiya Clinic Card -->
-                <div class="clinic-card" id="ibrahimiyaClinic">
-                    <h3>عيادة الإبراهيمية 🏥</h3>
-                    <ul>
-                        <li><span class="icon"><i class="fas fa-calendar-alt"></i></span> <strong class="card-label">أيام العمل:</strong> <span class="card-value">الأحد، الثلاثاء، الخميس</span></li>
-                        <li><span class="icon"><i class="fas fa-clock"></i></span> <strong class="card-label">مواعيد العمل العامة:</strong> <span class="card-value">الأحد والخميس</span></li>
-                        <li><span class="icon"><i class="fas fa-map-marker-alt"></i></span> <strong class="card-label">العنوان:</strong> <span class="card-value">الإبراهيمية حي الصاغة</span></li>
-                        <li><span class="icon"><i class="fas fa-map"></i></span> <a href="https://maps.app.goo.gl/ayEhNVi1kKBcXv1f7" target="_blank" class="card-link">عرض على الخريطة</a></li>
-                        <li><span class="icon"><i class="fab fa-whatsapp"></i></span> <a href="https://api.whatsapp.com/send?phone=%2B201005595000" target="_blank" class="card-link">واتساب العيادة</a></li>
-                        <li><span class="icon"><i class="fab fa-facebook-f"></i></span> <a href="https://www.facebook.com/share/16mmwBin46/" target="_blank" class="card-link">صفحة الفيسبوك</a></li>
-                    </ul>
+          <!-- Contact Form -->
+          <div class="contact-form">
+            <h2><i class="fas fa-comment"></i> أرسل رسالة</h2>
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>الاسم الكامل *</label>
+                  <input type="text" name="senderName" required placeholder="أدخل اسمك الكامل" />
                 </div>
-            </div>
-
-            <!-- General Phone Numbers -->
-            <div class="general-contact-info">
-                <h3>أرقام الاتصال العامة 📞</h3>
-                <div class="phone-numbers">
-                    <a href="tel:+201002470247">+20 10 02470247</a>
-                    <a href="tel:+201005595000">+20 10 05595000</a>
+                <div class="form-group">
+                  <label>رقم الهاتف *</label>
+                  <input type="tel" name="senderPhone" required placeholder="01xxxxxxxxx" />
                 </div>
-            </div>
+              </div>
+
+              <div class="form-group">
+                <label>نوع الرسالة *</label>
+                <select name="messageType" required>
+                  <option value="">اختر نوع الرسالة</option>
+                  <option value="inquiry">استفسار</option>
+                  <option value="complaint">شكوى</option>
+                  <option value="suggestion">اقتراح</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>محتوى الرسالة *</label>
+                <textarea name="messageContent" rows="4" required placeholder="اكتب رسالتك هنا..."></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" id="contactSubmitBtn">
+                  <span class="btn-text"><i class="fas fa-paper-plane"></i> إرسال</span>
+                  <div class="btn-loading" style="display:none;">
+                    <div class="spinner"></div>
+                    <span>جاري الإرسال...</span>
+                  </div>
+                </button>
+              </div>
+            </form>
+          </div>
+
         </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Contact Form Section -->
-    <section class="contact-form-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>أرسل شكواك أو مقترحك</h2> <!-- تم التعديل هنا -->
-                <p>املأ النموذج أدناه وسنتواصل معك في أقرب وقت ممكن.</p>
-            </div>
-            <div class="contact-form-container">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="contactName">الاسم:</label>
-                        <input type="text" id="contactName" name="contactName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contactPhone">رقم الهاتف:</label> <!-- تم التعديل هنا -->
-                        <input type="tel" id="contactPhone" name="contactPhone" required pattern="[0-9]{10,15}" title="الرجاء إدخال رقم هاتف صالح (10-15 رقم)."> <!-- تم التعديل هنا -->
-                    </div>
-                    <div class="form-group">
-                        <label for="contactMessage">رسالتك:</label>
-                        <textarea id="contactMessage" name="contactMessage" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary contact-submit-btn">
-                        ✉️ إرسال الرسالة
-                    </button>
-                    <div class="loading-spinner" id="contactFormSpinner"></div> <!-- مؤشر تحميل جديد -->
-                    <div id="contactFormMessage"></div> <!-- رسالة نموذج جديدة -->
-                </form>
-            </div>
-        </div>
-    </section>
+  <footer>
+    <div class="container">
+      <p>© 2025 مركز خالد عز الرجال. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 مركز خالد عز الرجال. جميع الحقوق محفوظة.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
