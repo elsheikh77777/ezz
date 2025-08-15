@@ -1,85 +1,104 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الرئيسية - مركز خالد عز الرجال</title>
+    
+    <!-- Favicon links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="shortcut icon" href="assets/icons/favicon.ico">
+    <link rel="manifest" href="assets/icons/site.webmanifest">
+    
     <link rel="stylesheet" href="style.css">
+    <!-- رابط Font Awesome محدث للإصدار الأحدث -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 </head>
-<body>
+<body class="home-page">
     <header>
         <div class="header-container">
             <div class="logo-section">
                 <a href="index.html" class="logo">
-                    <img src="assets/images/new logo.png" alt="مركز خالد عز الرجال">
+                    <img src="assets/images/logo.png" alt="مركز خالد عز الرجال">
+                    <img src="assets/images/logo2.png" alt="الشعار الثانوي" class="additional-logo">
                 </a>
-                <!-- تم تحديث مسار الصورة الجديدة هنا -->
-                <img src="assets/images/54646465.png" alt="شعار إضافي" class="additional-logo">
-                <button class="lang-toggle" onclick="toggleLanguage()" title="تغيير اللغة">
-                    <span class="lang-text">English</span>
-                    <span class="lang-icon">🌐</span>
-                </button>
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">الرئيسية</a></li>
-                    <li><a href="about.html">من نحن</a></li>
-                    <li><a href="services.html">الخدمات</a></li>
-                    <li><a href="appointment.html">احجز موعد</a></li>
-                    <li><a href="contact.html">تواصل معنا</a></li>
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> من نحن</a></li>
+                    <li><a href="services.html"><i class="fas fa-stethoscope"></i> الخدمات</a></li>
+                    <li><a href="appointment.html"><i class="fas fa-calendar-check"></i> احجز موعد</a></li>
+                    <li><a href="contact.html"><i class="fas fa-phone"></i> تواصل معنا</a></li>
                 </ul>
             </nav>
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-toggle" aria-label="فتح القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>مرحباً بكم في مركز خالد عز الرجال</h1>
-                <p>
-                    يجمع افضل استشاري العيون تحت سقف واحد
-                </p>
-                <div class="cta-buttons">
-                    <a href="appointment.html" class="btn btn-primary">
-                        📅 احجز موعدك الآن
-                    </a>
-                    <a href="services.html" class="btn btn-secondary">
-                        🔍 اكتشف خدماتنا
-                    </a>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>مرحباً بكم في مركز خالد عز الرجال</h1>
+                    <p>يجمع افضل استشاري العيون تحت سقف واحد</p>
+                    <div class="cta-buttons">
+                        <a href="appointment.html" class="btn btn-primary">
+                            <i class="fas fa-calendar-plus"></i> احجز موعدك الآن
+                        </a>
+                        <a href="services.html" class="btn btn-secondary">
+                            <i class="fas fa-search"></i> اكتشف خدماتنا
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="features">
-        <div class="features-container">
-            <div class="section-title">
-                <h2>لماذا تختار مركزنا؟</h2>
-                <p>نحن ملتزمون بتقديم أعلى مستويات الرعاية الصحية بأحدث التقنيات والأساليب العلاجية</p>
+        <!-- Features Section -->
+        <section class="features">
+            <div class="features-container">
+                <div class="section-title">
+                    <h2><i class="fas fa-award"></i> لماذا تختار مركزنا؟</h2>
+                    <p>نحن ملتزمون بتقديم أعلى مستويات الرعاية الصحية بأحدث التقنيات والأساليب العلاجية</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-hospital"></i></div>
+                        <h3>رعاية متخصصة</h3>
+                        <p>نقدم خدمات طبية متخصصة على أعلى مستوى من الجودة والاحترافية لضمان أفضل النتائج العلاجية.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-users"></i></div>
+                        <h3>فريق طبي متميز</h3>
+                        <p>يضم مركزنا نخبة من الأطباء والمختصين ذوي الخبرة العالية في مجال الرعاية الصحية.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-microscope"></i></div>
+                        <h3>أحدث التقنيات</h3>
+                        <p>نستخدم أحدث الأجهزة والتقنيات الطبية لضمان دقة التشخيص وفعالية العلاج.</p>
+                    </div>
+                </div>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🏥</div>
-                    <h3>رعاية متخصصة</h3>
-                    <p>نقدم خدمات طبية متخصصة على أعلى مستوى من الجودة والاحترافية لضمان أفضل النتائج العلاجية.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚕️</div>
-                    <h3>فريق طبي متميز</h3>
-                    <p>يضم مركزنا نخبة من الأطباء والمختصين ذوي الخبرة العالية في مجال الرعاية الصحية.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔬</div>
-                    <h3>أحدث التقنيات</h3>
-                    <p>نستخدم أحدث الأجهزة والتقنيات الطبية لضمان دقة التشخيص وفعالية العلاج.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 مركز خالد عز الرجال. جميع الحقوق محفوظة.</p>
+            <p>© 2025 مركز خالد عز الرجال. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
