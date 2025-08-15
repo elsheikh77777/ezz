@@ -1,401 +1,206 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>احجز موعد - مركز خالد عز الرجال</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* إضافات خاصة بصفحة حجز المواعيد */
-        .appointment-hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: 100px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .appointment-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path fill="%23ffffff" fill-opacity="0.1" d="M0,100 C300,20 700,20 1000,100 L1000,0 L0,0 Z"></path></svg>');
-            background-size: cover;
-        }
-
-        .appointment-hero-content {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .appointment-hero h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .appointment-hero p {
-            font-size: 20px;
-            opacity: 0.95;
-            line-height: 1.8;
-            margin-bottom: 40px;
-        }
-
-        /* قسم النموذج */
-        .appointment-form-section {
-            padding: 80px 0;
-            background: var(--light-gray);
-        }
-
-        .appointment-form-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 50px;
-            background: var(--white);
-            border-radius: 20px;
-            box-shadow: var(--shadow-hover);
-            text-align: right; /* لضمان محاذاة النص لليمين في RTL */
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="tel"],
-        .form-group input[type="number"],
-        .form-group input[type="datetime-local"],
-        .form-group select {
-            width: 100%;
-            padding: 14px 20px;
-            border: 2px solid var(--primary-color);
-            border-radius: 10px;
-            font-size: 17px;
-            color: var(--dark-gray);
-            background-color: var(--light-gray);
-            transition: var(--transition);
-            box-sizing: border-box; /* لضمان عدم تجاوز العرض المحدد */
-            font-family: 'Segoe UI', 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
-            direction: rtl;
-            text-align: right;
-        }
-
-        .form-group input[type="text"]:focus,
-        .form-group input[type="tel"]:focus,
-        .form-group input[type="number"]:focus,
-        .form-group input[type="datetime-local"]:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.3);
-            background-color: var(--white);
-        }
-
-        .form-group select {
-            appearance: none; /* لإزالة السهم الافتراضي في المتصفحات */
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background-image: url('data:image/svg+xml;utf8,<svg fill="%231976D2" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
-            background-repeat: no-repeat;
-            background-position: left 15px center; /* وضع السهم على اليسار في RTL */
-            padding-left: 40px; /* مسافة للنص بسبب الأيقونة */
-        }
-
-        .form-submit-btn {
-            width: 100%;
-            padding: 18px 30px;
-            font-size: 20px;
-            font-weight: 700;
-            margin-top: 30px;
-        }
-
-        #formMessage {
-            margin-top: 25px;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 17px;
-            text-align: center;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        #formMessage.success {
-            background-color: #E8F5E9; /* Light Green */
-            color: #2E7D32; /* Dark Green */
-            border: 1px solid #4CAF50;
-        }
-
-        #formMessage.error {
-            background-color: #FFEBEE; /* Light Red */
-            color: #D32F2F; /* Dark Red */
-            border: 1px solid #F44336;
-        }
-
-        .loading-spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left-color: var(--primary-color);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto 0;
-            display: none; /* مخفي افتراضياً */
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* ----- Quick Consultation Section Styles (Copied from services.html) ----- */
-        .quick-consultation-section {
-            padding: 80px 0;
-            background: var(--white);
-            text-align: center;
-        }
-
-        .consultation-form {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 40px;
-            background: var(--light-gray);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        .consultation-form textarea {
-            width: 100%;
-            min-height: 150px;
-            padding: 15px;
-            border: 2px solid var(--primary-color);
-            border-radius: 10px;
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            resize: vertical;
-            font-family: 'Segoe UI', 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
-            direction: rtl;
-            text-align: right;
-        }
-
-        .consultation-form textarea:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.3);
-        }
-
-        .consultation-result {
-            margin-top: 30px;
-            padding: 20px;
-            background: var(--light-blue);
-            border-radius: 15px;
-            border: 1px solid var(--accent-color);
-            text-align: right;
-            min-height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: var(--dark-blue);
-            font-weight: 500;
-            line-height: 1.7;
-        }
-        /* ----- End Quick Consultation Section Styles ----- */
-
-
-        /* التصميم المتجاوب */
-        @media (max-width: 768px) {
-            .appointment-hero h1 {
-                font-size: 36px;
-            }
-
-            .appointment-hero p {
-                font-size: 18px;
-            }
-
-            .appointment-form-container {
-                padding: 30px;
-            }
-
-            .form-group label {
-                font-size: 16px;
-            }
-
-            .form-group input,
-            .form-group select {
-                font-size: 15px;
-                padding: 12px 15px;
-            }
-
-            .form-group select {
-                background-position: left 10px center;
-                padding-left: 35px;
-            }
-
-            .form-submit-btn {
-                font-size: 18px;
-                padding: 16px 25px;
-            }
-
-            /* Responsive styles for Quick Consultation */
-            .consultation-form {
-                padding: 30px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .appointment-hero {
-                padding: 80px 0 60px;
-            }
-
-            .appointment-hero h1 {
-                font-size: 28px;
-            }
-
-            .appointment-form-container {
-                padding: 20px;
-            }
-
-            /* Responsive styles for Quick Consultation */
-            .consultation-form {
-                padding: 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>احجز موعد - مركز خالد عز الرجال</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- رابط Font Awesome محدث للإصدار الأحدث -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo-section">
-                <a href="index.html" class="logo">
-                    <img src="assets/images/new logo.png" alt="مركز خالد عز الرجال">
+  <header>
+    <div class="header-container">
+      <div class="logo-section">
+        <a href="index.html" class="logo">
+          <img src="assets/images/logo.png" alt="مركز خالد عز الرجال" />
+          <img src="assets/images/logo2.png" alt="الشعار الثانوي" class="additional-logo" />
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+          <li><a href="about.html"><i class="fas fa-info-circle"></i> من نحن</a></li>
+          <li><a href="services.html"><i class="fas fa-stethoscope"></i> الخدمات</a></li>
+          <li><a href="appointment.html" class="active"><i class="fas fa-calendar-check"></i> احجز موعد</a></li>
+          <li><a href="contact.html"><i class="fas fa-phone"></i> تواصل معنا</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-menu-toggle" aria-label="فتح القائمة">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>احجز موعدك الآن</h1>
+        <p>احجز موعدك بسهولة وسنتواصل معك لتأكيد الحجز</p>
+      </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section class="appointment-section">
+      <div class="container">
+        <div class="appointment-wrapper">
+          
+          <!-- Clinics Information -->
+          <div class="clinics-info">
+            <h2><i class="fas fa-hospital"></i> مواعيد العيادات</h2>
+            
+            <!-- عيادة الزقازيق -->
+            <div class="clinic-card">
+              <h3><i class="fas fa-clinic-medical"></i> عيادة الزقازيق</h3>
+              <p><strong>مواعيد العمل العامة:</strong> من السبت إلى الخميس ⏰ 9 ص - 9 م</p>
+              <p><strong>مواعيد د. خالد:</strong><br /> 
+                السبت: 12 ظهراً - 2 ظهراً<br /> 
+                الاثنين والأربعاء: 10 ص - 7 م
+              </p>
+              <p><strong>العنوان:</strong> الزقازيق القومية شارع طلبة عويضة أمام ايس كريم توته</p>
+              <p>
+                <a href="https://maps.app.goo.gl/AAHNNJ6c3zvBJmQk9" target="_blank">
+                  <i class="fas fa-map-marker-alt"></i> مشاهدة على الخريطة
                 </a>
-                <!-- تمت إضافة مسار الصورة الجديدة هنا -->
-                <img src="assets/images/54646465.png" alt="شعار 25 عام خبرة" class="additional-logo">
-                <button class="lang-toggle" onclick="toggleLanguage()" title="تغيير اللغة">
-                    <span class="lang-text">English</span>
-                    <span class="lang-icon">🌐</span>
-                </button>
+              </p>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="about.html">من نحن</a></li>
-                    <li><a href="services.html">الخدمات</a></li>
-                    <li><a href="appointment.html" class="active">احجز موعد</a></li>
-                    <li><a href="contact.html">تواصل معنا</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="appointment-hero">
-        <div class="container">
-            <div class="appointment-hero-content">
-                <h1>احجز موعدك الآن</h1>
-                <p>
-                    املأ النموذج أدناه لحجز موعد في مركز خالد عز الرجال.
-                    سنتواصل معك لتأكيد الموعد في أقرب وقت ممكن.
-                </p>
+            <!-- عيادة الإبراهيمية -->
+            <div class="clinic-card">
+              <h3><i class="fas fa-clinic-medical"></i> عيادة الإبراهيمية</h3>
+              <p><strong>أيام العمل:</strong> الأحد – الثلاثاء – الخميس</p>
+              <p><strong>العنوان:</strong> الإبراهيمية حي الصاغة</p>
+              <p>
+                <a href="https://maps.app.goo.gl/ayEhNVi1kKBcXv1f7" target="_blank">
+                  <i class="fas fa-map-marker-alt"></i> مشاهدة على الخريطة
+                </a>
+              </p>
             </div>
-        </div>
-    </section>
 
-    <!-- قسم الاستشارة السريعة المدعوم بـ Gemini API - تم نقله من services.html -->
-    <section class="quick-consultation-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>احصل على استشارة سريعة ✨</h2>
-                <p>صف أعراضك أو استفسارك، وسنساعدك في تحديد الخدمة المناسبة.</p>
+            <!-- الاستشاريون -->
+            <div class="clinic-card">
+              <h3><i class="fas fa-users"></i> استشاريون في باقي الأيام</h3>
+              <ul>
+                <li>المياه الزرقاء</li>
+                <li>القرح وجفاف العين</li>
+                <li>الأطفال والحول</li>
+                <li>أمراض الشبكية</li>
+              </ul>
             </div>
-            <div class="consultation-form">
-                <textarea id="consultationInput" placeholder="مثال: أعاني من جفاف شديد في العين مع حكة واحمرار..."></textarea>
-                <button id="getRecommendationBtn" class="btn btn-primary">
-                    ✨ احصل على توصية الخدمة
-                </button>
-                <div id="consultationResult" class="consultation-result" style="display: none;">
-                    <div class="loading-spinner" style="display: none;"></div>
-                    <p id="resultText"></p>
+
+            <!-- معلومات الحجز -->
+            <div class="contact-method">
+              <strong><i class="fas fa-info-circle"></i> للحجز:</strong> احجز قبل الموعد بيوم واحد على الأقل عبر الاتصال أو واتساب أو الموقع الخاص بنا 
+            </div>
+            
+            <div class="contact-method">
+              <a href="tel:01005595000"><i class="fas fa-phone"></i> 01005595000</a> – 
+              <a href="tel:01002405871"><i class="fas fa-phone"></i> 01002405871</a>
+            </div>
+            
+            <div class="contact-method">
+              <a target="_blank" href="https://api.whatsapp.com/send?phone=%2B201005595000">
+                <i class="fab fa-whatsapp"></i> واتساب
+              </a>
+            </div>
+            
+            <div class="contact-method">
+              <a target="_blank" href="https://www.facebook.com/share/16mmwBin46/">
+                <i class="fab fa-facebook-square"></i> فيسبوك
+              </a>
+            </div>
+          </div>
+
+          <!-- Appointment Form -->
+          <div class="appointment-form">
+            <h2><i class="fas fa-calendar-plus"></i> احجز موعدك</h2>
+            <form id="appointmentForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>الاسم الكامل *</label>
+                  <input type="text" name="fullName" required placeholder="أدخل اسمك الكامل" />
                 </div>
-            </div>
+                <div class="form-group">
+                  <label>رقم الهاتف *</label>
+                  <input type="tel" name="phone" required placeholder="01xxxxxxxxx" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>العمر *</label>
+                  <input type="number" name="age" required placeholder="أدخل العمر" min="1" max="120" />
+                </div>
+                <div class="form-group">
+                  <label>العيادة المفضلة *</label>
+                  <select name="preferredClinic" required>
+                    <option value="">اختر العيادة</option>
+                    <option value="zagazig">عيادة الزقازيق</option>
+                    <option value="ibrahimiya">عيادة الإبراهيمية</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>العنوان *</label>
+                <input type="text" name="address" required placeholder="أدخل عنوانك" />
+              </div>
+              
+              <div class="form-group">
+                <label>الخدمة المطلوبة *</label>
+                <select name="service" required>
+                  <option value="">اختر الخدمة</option>
+                  <option value="vision-correction">تصحيح النظر</option>
+                  <option value="dry-eye">الجفاف وأمراض سطح العين</option>
+                  <option value="retina">علاج الشبكية</option>
+                  <option value="cataract">جراحة الماء الأبيض (الكتاراكت)</option>
+                  <option value="strabismus">الحول للأطفال والكبار</option>
+                  <option value="glaucoma">جراحة الماء الأزرق (الجلوكوما)</option>
+                  <option value="follow-up">متابعة</option>
+                  <option value="referral">تحويل</option>
+                  <option value="surgery-follow-up">متابعة عملية</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label>التاريخ المفضل</label>
+                <input type="date" name="preferredDate" />
+              </div>
+              
+              <div class="form-group">
+                <label>ملاحظات إضافية</label>
+                <textarea name="notes" rows="4" placeholder="مثال: المريض يعاني من السكر، ضغط الدم، حساسية من أدوية معينة..."></textarea>
+              </div>
+              
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                  <span class="btn-text"><i class="fas fa-calendar-check"></i> احجز موعد</span>
+                  <div class="btn-loading" style="display:none;">
+                    <div class="spinner"></div>
+                    <span>جاري الإرسال...</span>
+                  </div>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Appointment Form Section -->
-    <section class="appointment-form-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>نموذج حجز المواعيد</h2>
-                <p>الرجاء ملء جميع الحقول المطلوبة لضمان معالجة طلبك بنجاح.</p>
-            </div>
-            <div class="appointment-form-container">
-                <form id="appointmentForm">
-                    <div class="form-group">
-                        <label for="fullName">الاسم بالكامل:</label>
-                        <input type="text" id="fullName" name="fullName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phoneNumber">رقم الهاتف:</label>
-                        <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10,15}" title="الرجاء إدخال رقم هاتف صالح (10-15 رقم).">
-                    </div>
-                    <div class="form-group">
-                        <label for="nationalId">الرقم القومي (14 رقم):</label>
-                        <input type="text" id="nationalId" name="nationalId" required pattern="[0-9]{14}" title="الرجاء إدخال 14 رقمًا للرقم القومي.">
-                    </div>
-                    <div class="form-group">
-                        <label for="specialty">التخصص المطلوب:</label>
-                        <select id="specialty" name="specialty" required>
-                            <option value="">اختر التخصص</option>
-                            <option value="تصحيح النظر">تصحيح النظر</option>
-                            <option value="الجفاف وأمراض سطح العين">الجفاف وأمراض سطح العين</option>
-                            <option value="علاج الشبكية">علاج الشبكية</option>
-                            <option value="جراحة الماء الأبيض">جراحة الماء الأبيض (الكتاراكت)</option>
-                            <option value="الحول">الحول للأطفال والكبار</option>
-                            <option value="جراحة الماء الأزرق">جراحة الماء الأزرق (الجلوكوما)</option>
-                            <option value="استشارة عامة">استشارة عامة</option>
-                            <option value="متابعة">متابعة</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="age">السن:</label>
-                        <input type="number" id="age" name="age" required min="1" max="120">
-                    </div>
-                    <div class="form-group">
-                        <label for="desiredTime">الوقت المطلوب للموعد:</label>
-                        <input type="datetime-local" id="desiredTime" name="desiredTime" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary form-submit-btn">
-                        ✅ إرسال طلب الحجز
-                    </button>
-                    <div class="loading-spinner" id="formSpinner"></div>
-                    <div id="formMessage"></div>
-                </form>
-            </div>
-        </div>
-    </section>
+  <footer>
+    <div class="container">
+      <p>© 2025 مركز خالد عز الرجال. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 مركز خالد عز الرجال. جميع الحقوق محفوظة.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
